@@ -1,0 +1,17 @@
+.popup__input {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 200%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.5);
+    margin: 0 auto 5px;
+    padding: 0px;
+}
+
+.popup__input:last-child { 
+    margin: 30px 0; 
+} 
+
+

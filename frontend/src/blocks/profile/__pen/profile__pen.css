@@ -1,0 +1,12 @@
+.profile__pen {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    left: 47px;
+    bottom: 47px;
+    z-index: 5;
+}
+
+.profile__pen:hover {
+    opacity: 1;
+}

@@ -1,0 +1,4 @@
+.header__texts {
+    display: flex;
+    flex-direction: row;
+}

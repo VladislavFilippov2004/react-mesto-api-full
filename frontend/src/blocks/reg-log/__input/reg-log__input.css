@@ -1,0 +1,17 @@
+.reg-log__input {
+    margin-top: 30px;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: normal;
+    color: white;
+    font-size: 14px;
+    width: 358px;
+    line-height: 17px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    padding-bottom: 13px;
+
+}
+

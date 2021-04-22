@@ -1,0 +1,17 @@
+.profile__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+}
+
+.profile__box:hover {
+    opacity: 1;
+    transition: opacity 0.5s;
+}

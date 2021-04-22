@@ -1,0 +1,10 @@
+.root {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0px 19px;
+    background-color: black;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    color: #ffffff;
+    font-style: normal;
+}

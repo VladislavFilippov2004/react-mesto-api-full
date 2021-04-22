@@ -1,0 +1,14 @@
+.elements__black-like{
+    display: none;
+    margin-left: auto;
+    align-items: center;
+    outline: none;
+    height: 24px;
+    border: none;
+    background-color: white;
+}
+
+.elements__black-like:hover {
+    opacity: 0.3;
+    transition: opacity 1s;
+}

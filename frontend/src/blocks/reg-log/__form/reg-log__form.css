@@ -1,0 +1,9 @@
+.reg-log__form {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 358px;
+}

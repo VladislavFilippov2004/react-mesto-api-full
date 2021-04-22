@@ -1,0 +1,10 @@
+.profile__edit-button {
+    outline: none;
+    border: none;
+    background-color: black;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
+    transition: opacity 1s;
+}

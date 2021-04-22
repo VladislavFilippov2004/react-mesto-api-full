@@ -1,0 +1,17 @@
+.elements__like {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    outline: none;
+    height: 24px;
+    width: 24px;
+    z-index: 1;
+    border: none;
+    background-color: white;
+    /* border: 1px solid green; */
+}
+
+.elements__like:hover {
+    opacity: 0.3;
+    transition: opacity 1s;
+}

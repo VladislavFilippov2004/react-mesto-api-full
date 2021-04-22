@@ -1,0 +1,9 @@
+.elements__under-picture {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 21px;
+    padding-right: 15px;
+    align-items: center;
+}
