@@ -1,8 +1,11 @@
 const express = require('express');
+require('dotenv').config();
 
+// const { NODE_ENV } = process.env;
 const { PORT = 3000 } = process.env;
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 
 // const path = require('path');
 const mongoose = require('mongoose');
@@ -29,15 +32,15 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 const app = express();
 app.use(bodyParser.json());
 app.use(requestLogger);
-
+app.use(cors());
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
 
-app.post('/signin', validateLogin, login);
-app.post('/signup', validateCreateUser, createUser);
+app.post('/api/signin', validateLogin, login);
+app.post('/api/signup', validateCreateUser, createUser);
 app.use(auth);
 app.use(router);
 app.use(errorLogger);

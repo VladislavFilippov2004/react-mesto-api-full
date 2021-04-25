@@ -6,7 +6,9 @@
     overflow: hidden;
     position: relative;
     background-image: url('../../../images/user-avatar.jpg');
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
  @media screen and (max-width:619px) {

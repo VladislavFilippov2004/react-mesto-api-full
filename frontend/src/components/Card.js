@@ -1,12 +1,11 @@
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
-import api from '../utils/api.js';
 
 function Card(props) {
     const cardContext = React.useContext(CurrentUserContext); // переменная подписка к контексту
-    const isOwn = props.card.owner._id === cardContext._id; // переменная, сравнивающая id владельца карточки и наш id для 
+    const isOwn = props.card.owner === cardContext._id; // переменная, сравнивающая id владельца карточки и наш id для 
     // управление классами иконки мусорки
-    const isLiked = props.card.likes.some(i => i._id === cardContext._id); // переменная, сравинивающая id владельца карточки и 
+    const isLiked = props.card.likes.some(i => i === cardContext._id); // переменная, сравинивающая id владельца карточки и 
     // наш id для управления иконкой лайка (происходит в массиве likes)
     const cardLikeButtonClassName = `elements__like ${isLiked ? 'elements__like_black' : 'elements__like_white'}` // переменная определяющая состояние лайка
 

@@ -26,22 +26,25 @@ function App() {
     React.useEffect(() => {
         api.getUserInformation()
             .then((userInfo) => {
+                console.log('getUserInfo isLoggedIn', isLoggedIn);
+                console.log('useEffect getUserInfo setCurrentUser userInfo', userInfo);
                 setCurrentUser(userInfo)
             })
 
             .catch((err) => {
-                console.log(err);
+                console.log('Попало в catch(getUserInfo', err);
             })
 
         api.getInitialCards()
             .then((initialCards) => {
+                console.log(initialCards)
                 setCards(initialCards);
             })
             .catch((err) => {
                 console.log(err)
             })
 
-    }, [])
+    }, [isLoggedIn])
 
     React.useEffect(() => {
         checkToken()
@@ -53,7 +56,6 @@ function App() {
         // console.log('token из localStorage', token)
         auth.checkToken(token)
             .then((res) => {
-                // console.log('Ответ auth-checkToken', res.status)
                 if (res.status === 200) {
                     setLoggedIn(true)
                     history.push('/')
@@ -65,7 +67,7 @@ function App() {
             .then((res) => {
                 // console.log('checkToken.then2', res)
                 if (res) {
-                    setUserEmail(res.data.email)
+                    setUserEmail(res.email)
                 } else {
                     history.push('/signin')
                 }
@@ -73,7 +75,8 @@ function App() {
     }
 
     function handleCardLike(card) { // функция постановки и снятия лайка
-        const isLiked = card.likes.some(i => i._id === currentUser._id); // переменная, определяющая, есть ли наш id в массиве поставленных лайков
+        const isLiked = card.likes.some(i => i === currentUser._id); // переменная, определяющая, есть ли наш id в массиве поставленных лайков
+        console.log(isLiked)
         const likeRequest = !isLiked ? api.putLike(card._id) : api.deleteLike(card._id); // вызов запросов в api в соответствии с состоянием isLiked
         likeRequest.then((newCard) => {
             const newCards = cards.map((c) => c._id === card._id ? newCard : c) // находим карточку, которой поставили лайк и обновляем её
@@ -90,8 +93,7 @@ function App() {
         auth.register(email, password)
             .then((res) => {
                 try {
-                    console.log(res)
-                    if (res.status === 201) {
+                    if (res.status === 200) {
                         res.json()
                         setIsSuccess(true)
                         // console.log(isSuccess, 'должно быть true')
@@ -103,7 +105,6 @@ function App() {
                         setInfoTooltipPopup(true)
                     }
                 } catch (err) {
-                    console.log(err, '3333')
                     setIsSuccess(false)
                     // console.log(isSuccess, 'должно быть false')
                     // console.log(isSuccess)
@@ -145,7 +146,10 @@ function App() {
     }
 
     function handleSignOut() {
-        localStorage.removeItem('token')
+        console.log('handleSignOut');
+        localStorage.removeItem('token');
+        console.log('handleSignOut поставлю setLoggedIn false, текущий', isLoggedIn)
+        setLoggedIn(false)
     }
 
 

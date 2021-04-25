@@ -5,7 +5,7 @@ import logo from '../images/logo.svg';
 function Header(props) {
     return (
         <header className="header">
-            <img className="header__logo" src={logo} alt="Плохое соединение с интернетом" />
+            <img className="header__logo" src={logo} alt="Логотип Mesto" />
             <nav>
 
                 <Switch>

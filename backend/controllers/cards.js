@@ -71,6 +71,7 @@ const deleteLike = (req, res, next) => {
       if (like === null) {
         throw new NotFoundError('Карточки с переданным id нет в базе');
       }
+      console.log('like', like);
       return res.send(like);
     })
 

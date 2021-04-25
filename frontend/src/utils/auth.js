@@ -1,3 +1,4 @@
+import constants from './constants.js'
 
 class Auth {
     constructor(base_Url) {
@@ -16,9 +17,11 @@ class Auth {
               })
         })
         .then((res) => {
+            console.log('ответ от register.then', res);
             return res
         })
         .catch((err) => {
+            console.log(err);
             return err
         })
     }
@@ -30,16 +33,16 @@ class Auth {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                email: email,
                 password: password,
-                email: email
               })
         })
         .then((res) => {
-            console.log('Сработает auth.authorize.then')
+            console.log('Сработает auth.authorize.then', res)
             return res
         })
         .catch((err) => {
-            console.log('Сработает auth.authorize.catch')
+            console.log('Сработает auth.authorize.catch', err)
             return err
         })
     }
@@ -59,7 +62,7 @@ class Auth {
 
     
 }
-const auth = new Auth ('https://auth.nomoreparties.co');
+const auth = new Auth (`${constants.baseUrl}`);
 export default auth;
 
  
