@@ -25,10 +25,9 @@ const createCard = (req, res, next) => {
 const deleteCard = (req, res, next) => {
   const { cardId } = req.params;
   Card.findById(cardId)
+    .orFail(new NotFoundError('Карточка с указанным _id не найдена.'))
     .then((card) => {
-      if (!card) {
-        throw new NotFoundError('Карточка с указанным _id не найдена.');
-      } else if (card.owner.equals(req.user._id)) {
+      if (card.owner.equals(req.user._id)) {
         Card.findByIdAndRemove(card)
           .then(() => {
             res.status(200).send({ message: 'Карточка успешно удалена' });
@@ -71,7 +70,6 @@ const deleteLike = (req, res, next) => {
       if (like === null) {
         throw new NotFoundError('Карточки с переданным id нет в базе');
       }
-      console.log('like', like);
       return res.send(like);
     })
 

@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
-
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 // const { NODE_ENV } = process.env;
 const { PORT = 3000 } = process.env;
 const bodyParser = require('body-parser');
@@ -22,6 +23,11 @@ const {
   validateLogin,
 } = require('./middlewares/validations.js');
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -32,6 +38,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 const app = express();
 app.use(bodyParser.json());
 app.use(requestLogger);
+app.use(limiter);
+app.use(helmet());
+app.use(helmet.hsts());
+app.disable('x-powered-by');
 app.use(cors());
 app.get('/crash-test', () => {
   setTimeout(() => {

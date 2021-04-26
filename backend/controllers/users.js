@@ -21,12 +21,8 @@ const getUsers = (req, res, next) => {
 const getUserById = (req, res, next) => {
   const { userId } = req.params;
   User.findById(userId)
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError('Пользователь по указанному id не найден');
-      }
-      return res.send(user);
-    })
+    .orFail(new NotFoundError('Пользователь по указанному id не найден'))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
